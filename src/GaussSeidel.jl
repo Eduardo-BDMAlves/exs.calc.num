@@ -1,21 +1,28 @@
-function gaussseidel(A,B, ϵ, max_inter)
-    A=[A B]
-    n=size(A,1)
-    X=zeros(n,1)
-    while ϵ > 1e-6
-        for k in 1:max_inter
-            matriz_atualiz=X
+using LinearAlgebra
+function gauss_seidel(A, b, max_iter, tol)
+    n = length(b)
+    x = zeros(n)
+    e=0
+
+    while e > tol
+        for iter in 1:max_iter
+            x_prev = copy(x)
+        
             for i in 1:n
-                d=A[i,n+1]
+                sum_term = 0.0
+            
                 for j in 1:n
-                    if j!=i
-                        d= d - sum((A[i,1:j] * X[1:j]))
+                    if j != i
+                        sum_term += A[i, j] * x[j]
                     end
-                    X[j]= d / A[i,i]
                 end
+            
+                x[i] = (b[i] - sum_term) / A[i, i]
             end
+        
+        e=max(abs(x - x_prev)) 
         end
     end
-print(X)
-end
+return (x)
+end        
 
