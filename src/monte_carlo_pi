@@ -1,0 +1,16 @@
+function monte_carlo_pi(num_pontos)
+    dentro_circulo = 0
+    
+    for _ in 1:num_pontos
+        x, y = rand(), rand()  
+        distancia = x^2 + y^2  
+        
+        if distancia <= 1.0
+            dentro_circulo += 1
+        end
+    end
+    
+    estimativa_pi = 4 * dentro_circulo / num_pontos
+    return estimativa_pi
+end
+
