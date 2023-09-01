@@ -1,18 +1,16 @@
 using LinearAlgebra
-function gaussseidel(A,B, x0, ϵ, max_inter)
-    n=size(A)
-    x=x0
-        for i in 1:max_inter
-            matriz_atualiz=zeros(n)
-            for j in 1:n
-                s1=dot(A[j,j],matriz_atualiz[1,1:j])
-                s2= dot(A[j,j+1],x[j + 1])
-                matriz_atualiz[j]=(b[j]-s1-s2)/A[j,j]
-                if isapprox(x,matriz_atualiz)
-                    println(matriz_atualiz)
-                else 
-                    println("isso deu merda")
-                end
-            end
+function gauss_seidel(A, b; maxiter, ϵ=1e-10, ω)
+    n = length(b)
+    x = zeros(n)
+    for iter in 1:maxiter
+        x_old = copy(x)
+        for i in 1:n
+            σ = dot(A[i,1:i-1], x[1:i-1]) + dot(A[i,i+1:end], x_old[i+1:end])
+            x[i] = (1 - ω) * x[i] + ω * (b[i] - σ) / A[i,i]
         end
+        if norm(x - x_old) < ϵ
+            return x
+        end
+    end
+    return x
 end
