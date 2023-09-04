@@ -1,17 +1,17 @@
-using Plots
-
-using Plots
+using Pkg
+Pkg.add("Plots")
+using Random
 
 function monte_carlo_pi(n)
     inside = 0
-    x_inside = Float64[]
-    y_inside = Float64[]
-    x_outside = Float64[]
-    y_outside = Float64[]
-    for i in 1:n
-        x = rand()
-        y = rand()
-        if x^2 + y^2 < 1
+    x_inside = []
+    y_inside = []
+    x_outside = []
+    y_outside = []
+
+    for _ in 1:n
+        x, y = rand(), rand()
+        if sqrt(x^2 + y^2) <= 1.0
             inside += 1
             push!(x_inside, x)
             push!(y_inside, y)
@@ -20,17 +20,23 @@ function monte_carlo_pi(n)
             push!(y_outside, y)
         end
     end
+
     pi_estimate = 4 * inside / n
-    scatter(x_inside, y_inside, c=:blue, label="Inside")
-    scatter!(x_outside, y_outside, c=:red, label="Outside")
-    return pi_estimate
+    return pi_estimate, x_inside, y_inside, x_outside, y_outside
 end
 
-n = 1000
-ϵ = 1e-5
-pi_estimate = monte_carlo_pi(n)
-while abs(pi_estimate - π) > ϵ
-    n *= 2
-    pi_estimate = monte_carlo_pi(n)
-end
+n = 100000  # Número de pontos gerados
+pi_estimate, x_inside, y_inside, x_outside, y_outside = monte_carlo_pi(n) # defnindo os pontos pela função
+
+println("Estimativa de π: $pi_estimate") #estimativa: nao consegui colocar o while para fazer com a precisão certa 
+
+using Plots
+
+scatter(x_inside, y_inside, label="Dentro da precisão", color="red")
+scatter!(x_outside, y_outside, label="Fora da precisão", color="blue")
+plot!([0, 1], [0, 1], color="black", label="Círculo Unitário")
+savefig("monte_carlo_pi_plot.pdf")
+
+
+
 
