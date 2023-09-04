@@ -34,7 +34,7 @@ using Plots
 
 scatter(x_inside, y_inside, label="Dentro da precisão", color="red")
 scatter!(x_outside, y_outside, label="Fora da precisão", color="blue")
-plot!([0, 1], [0, 1], color="black", label="Círculo Unitário")
+plot!([0, 1], [0, 1], color="black", label=" Raio do Círculo Unitário")
 savefig("monte_carlo_pi_plot.pdf")
 
 
