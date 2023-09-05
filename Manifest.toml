@@ -2,7 +2,7 @@
 
 julia_version = "1.9.3"
 manifest_format = "2.0"
-project_hash = "839d0f26c972fe2a59a3ddb4761e8165b17e5eeb"
+project_hash = "313a776764e6c760358dad3699180632be44f702"
 
 [[deps.ArgTools]]
 uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
@@ -285,6 +285,11 @@ deps = ["Dates", "Mmap", "Parsers", "Unicode"]
 git-tree-sha1 = "31e996f0a15c7b280ba9f76636b3ff9e2ae58c9a"
 uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 version = "0.21.4"
+
+[[deps.Jokes]]
+git-tree-sha1 = "d3b4592976c8b8a3658e5e77c42e004d230546e8"
+uuid = "51dfaa90-333b-4553-a411-bc8026e4957c"
+version = "0.0.5"
 
 [[deps.JpegTurbo_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
