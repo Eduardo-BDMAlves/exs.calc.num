@@ -1,5 +1,5 @@
 using DrWatson
-@quickactivate ("MonteCarloPlot.jl")
+quickactivate(srcdir("MonteCarloPlot.jl"))
 include(srcdir("monte_carlo_pi.jl"))
 n = 100_000  # Número de pontos gerados
 # pi_estimate, x_inside, y_inside, x_outside, y_outside = monte_carlo_pi(n) # defnindo os pontos pela função
