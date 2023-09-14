@@ -8,12 +8,12 @@ pi_estimate, x_inside, y_inside, x_outside, y_outside, lista=monte_carlo_pi(n)
 function monte_carlo_pi_otimiz(n,lista)
     inside = 0
     num=size(lista)
-    x_inside = lista[1:num/4] 
-    y_inside = lista[num/4:num/3]
-    x_outside = lista[num/3:num/2]
-    y_outside = lista[num/2:num]
+    x_inside = lista[(1):(num/4)] 
+    y_inside = lista[(num/4):(num/3)]
+    x_outside = lista[(num/3):(num/2)]
+    y_outside = lista[(num/2):(num)]
 
-    for _ in 1:(n-num/2)
+    for _ in 1:(n-(num/2))
         x, y = rand(), rand()
         if x^2 + y^2 <= 1.0
             inside += 1

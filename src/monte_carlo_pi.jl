@@ -4,10 +4,10 @@ using Random
 
 function monte_carlo_pi(n)
     inside = 0
-    x_inside = [] 
-    y_inside = []
-    x_outside = []
-    y_outside = []
+    x_inside = Float64[] 
+    y_inside = Float64[]
+    x_outside = Float64[]
+    y_outside = Float64[]
 
     for _ in 1:n
         x, y = rand(), rand()
@@ -21,7 +21,7 @@ function monte_carlo_pi(n)
         end
     end
     pi_estimate = 4 * inside / n
-    lista=Array[x_inside;x_outside;y_inside;y_outside]
+    lista=[x_inside;x_outside;y_inside;y_outside]
     #println(lista)
     #print(size(lista))
     return pi_estimate, x_inside, y_inside, x_outside, y_outside,lista
