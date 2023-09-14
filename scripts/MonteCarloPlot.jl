@@ -1,5 +1,5 @@
 using DrWatson
-quickactivate(srcdir("MonteCarloPlot.jl"))
+quickactivate
 include(srcdir("monte_carlo_pi.jl"))
 n = 100_000  # Número de pontos gerados
 # pi_estimate, x_inside, y_inside, x_outside, y_outside = monte_carlo_pi(n) # defnindo os pontos pela função
@@ -24,7 +24,7 @@ using Plots
 f=let
     f=scatter(x_inside, y_inside, label="Dentro da precisão", color="red",aspect_ratio=:equal)
     scatter!(x_outside, y_outside, label="Fora da precisão", color="blue")
-    # plot!([0, 1], [0, 1], color="black", label=" Raio do Círculo Unitário")
+    plot!([0, 1], [0, 1], color="black", label=" Raio do Círculo Unitário")
     plot!(x->(sqrt(1.0-x^2)),
         color=:cyan,
         label="Raio do círculo unitário",
