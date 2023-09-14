@@ -1,7 +1,17 @@
 using DrWatson
 @quickactivate
 using Random
-
+"""
+    function monte_carlo_pi(n)
+Function that returns an approximation of pi.
+pi_estimate will be defined using the Monte Carlo method, which 
+utilizes random point generation to estimate the value of pi
+#Arguments
+n=number of interaction
+#Example
+n=1_000 
+pi_estimate=3.196
+"""
 function monte_carlo_pi(n)
     inside = 0
     x_inside = Float64[] 
@@ -20,7 +30,7 @@ function monte_carlo_pi(n)
             push!(y_outside, y)
         end
     end
-    print(inside)
+    #print(inside)
     pi_estimate = 4 * inside / n
     lista=[x_inside;x_outside;y_inside;y_outside]
     #println(lista)
