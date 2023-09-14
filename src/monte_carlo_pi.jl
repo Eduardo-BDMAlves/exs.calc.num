@@ -20,6 +20,7 @@ function monte_carlo_pi(n)
             push!(y_outside, y)
         end
     end
+    print(inside)
     pi_estimate = 4 * inside / n
     lista=[x_inside;x_outside;y_inside;y_outside]
     #println(lista)
