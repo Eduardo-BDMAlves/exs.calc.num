@@ -1,9 +1,7 @@
 using DrWatson
 @quickactivate
 
-using LinearAlgebra ## Colocar no topo dos arquivos
-
-
+using LinearAlgebra 
 include(srcdir("GaussSeidel.jl"))
 
 
